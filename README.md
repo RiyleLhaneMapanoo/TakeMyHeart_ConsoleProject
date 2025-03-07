@@ -8,7 +8,11 @@ You have a new handsome classmate, wow! But something doesn't feel right with hi
 Objective: Reach a Good End(?) :) <3 
 
 Features follows the CRUD concept:
+
 C  – Allows the player to enter a custom name.
+
 R – Displays choices and game progression based on the player's input.
+
 U  – Updates the love points based on player choices.
+
 D – Resets the game (deletes previous love points) when restarting.
