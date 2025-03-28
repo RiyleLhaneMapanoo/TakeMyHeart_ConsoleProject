@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeMyHeart_ConsoleGameProject", "TakeMyHeart_ConsoleGameProject\TakeMyHeart_ConsoleGameProject.csproj", "{648D6AE0-89D7-42A6-83A4-703689737CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMH_BusinessDataLogic", "TMH_BusinessDataLogic\TMH_BusinessDataLogic.csproj", "{57475E7B-B72E-4772-9AA8-C17518080799}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{648D6AE0-89D7-42A6-83A4-703689737CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{648D6AE0-89D7-42A6-83A4-703689737CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648D6AE0-89D7-42A6-83A4-703689737CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57475E7B-B72E-4772-9AA8-C17518080799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57475E7B-B72E-4772-9AA8-C17518080799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57475E7B-B72E-4772-9AA8-C17518080799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57475E7B-B72E-4772-9AA8-C17518080799}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
