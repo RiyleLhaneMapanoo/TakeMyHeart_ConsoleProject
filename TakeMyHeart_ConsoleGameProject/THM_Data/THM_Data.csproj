@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\THM_Data\THM_Data.csproj" />
+    <ProjectReference Include="..\Common_Player\Common_Player.csproj" />
   </ItemGroup>
 
 </Project>

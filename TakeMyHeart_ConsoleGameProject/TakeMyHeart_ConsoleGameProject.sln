@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeMyHeart_ConsoleGameProj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMH_BusinessDataLogic", "TMH_BusinessDataLogic\TMH_BusinessDataLogic.csproj", "{57475E7B-B72E-4772-9AA8-C17518080799}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THM_Data", "THM_Data\THM_Data.csproj", "{BECB3D15-A5A2-4780-B1D7-42F5602D2C73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common_Player", "Common_Player\Common_Player.csproj", "{45C850D7-4CC4-4136-B5B6-B9425E542987}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{57475E7B-B72E-4772-9AA8-C17518080799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57475E7B-B72E-4772-9AA8-C17518080799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57475E7B-B72E-4772-9AA8-C17518080799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BECB3D15-A5A2-4780-B1D7-42F5602D2C73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BECB3D15-A5A2-4780-B1D7-42F5602D2C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BECB3D15-A5A2-4780-B1D7-42F5602D2C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BECB3D15-A5A2-4780-B1D7-42F5602D2C73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C850D7-4CC4-4136-B5B6-B9425E542987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C850D7-4CC4-4136-B5B6-B9425E542987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C850D7-4CC4-4136-B5B6-B9425E542987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C850D7-4CC4-4136-B5B6-B9425E542987}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

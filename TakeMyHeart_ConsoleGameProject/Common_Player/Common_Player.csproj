@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\THM_Data\THM_Data.csproj" />
-  </ItemGroup>
-
 </Project>
