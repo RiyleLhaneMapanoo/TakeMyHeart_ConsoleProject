@@ -112,9 +112,9 @@ namespace THM_Data;
         return Player.lovePts;
     }
 
-    public int setlovePts(int pts)
+    public int setlovePts(int value)
     {
-        return Player.lovePts = pts;
+        return Player.lovePts = value;
     }
 
     public string getName() {

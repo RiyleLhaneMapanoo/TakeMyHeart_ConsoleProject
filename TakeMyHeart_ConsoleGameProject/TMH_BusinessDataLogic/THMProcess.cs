@@ -10,8 +10,7 @@ namespace TMH_BusinessDataLogic
        
 
         public THM_Info dataLogic = new THM_Info();
-
-
+       
         public string pointAllocation(ref int mainLovePts, int ptsA, int ptsB, string choice)
         {
 
@@ -61,33 +60,39 @@ namespace TMH_BusinessDataLogic
         }
 
         //keep the records or restart all over
-        public void YesChoiceProcess(string restartChoice) {
 
-            if (restartChoice == "b" || restartChoice == "B")
+        public int getlovePts()
+        {
+            return dataLogic.getlovePts();
+        }
+
+        public int setLovePts(int loveP)
+        {
+            return dataLogic.setlovePts(loveP);
+        }
+
+        public bool YesChoiceProcess(string restartChoice) {
+
+            if (restartChoice == "a" || restartChoice == "A")
             {
-                Console.Clear();
-                
+                setLovePts(0);
+                return true; // Fresh start
             }
-            else if (restartChoice == "a" || restartChoice == "A")
+            else if (restartChoice == "b" || restartChoice == "B")
             {
-               setlovePts(0);
-
-
+                setLovePts(0);
+                return false; // Keep records
             }
-            
+
+            return false;
+
 
 
         }
 
         //invalid choice
-        public int getlovePts()
-        {
-            return dataLogic.lovePts;
-        }
-        public int setlovePts(int lovePts)
-        {
-            return dataLogic.setlovePts(lovePts);
-        }
+        
+
 
         public string getName()
         {

@@ -8,9 +8,11 @@ namespace TakeMyHeart_ConsoleGameProject
     internal class Program
     {
         static THMProcess busPro = new THMProcess();
+        public static int lvPTs = busPro.setLovePts(lvPTs);
+
         static void Main(string[] args)
         {
-            
+
             string[] storyLine = busPro.getstoryLineLibrary();
             string[] A_Choices = busPro.getchoicesALibrary();
             string[] B_Choices = busPro.getchoicesBLibrary();
@@ -18,14 +20,14 @@ namespace TakeMyHeart_ConsoleGameProject
             string[] storyLine_B = busPro.getStoryDialougeB();
 
             string invalidMess = busPro.InvalidChoice();
-            int lvPT = busPro.getlovePts();
+
 
             Console.WriteLine("♥ Take My Heart ♥ \n");
-                Console.WriteLine("\n♥ Recommended to play in a wide console ♥ \n");
+            Console.WriteLine("\n♥ Recommended to play in a wide console ♥ \n");
 
 
-               while (true)
-               {
+            while (true)
+            {
                 string player;
                 Console.WriteLine("\nHello there! hmm...What's your name?");
                 Console.Write("Name: ");
@@ -34,97 +36,123 @@ namespace TakeMyHeart_ConsoleGameProject
                 player = busPro.getName();
 
 
-                Console.WriteLine(busPro.getName());
 
                 Console.WriteLine($"\nI see! Welcome {player}. Goodluck ;) ");
                 Choices(A_Choices[0], B_Choices[0]);
 
+                int id = 1;
+                while (true)
+                {
 
-                //2
-                GameChoices(5, 10, storyLine[0], storyLine[0], invalidMess);
-                Console.WriteLine("\nFinal Love Points: " + busPro.getlovePts());
-                //2.1
-                Choices(A_Choices[1], B_Choices[1]);
-                    
-                GameChoicesVer2( 5, 10, storyLine[1], A_Choices[2], B_Choices[2], storyLine[2], invalidMess);
+                    switch (id)
+                    {
+
+                        case 1:
+                            id = GameChoices(5, 10, storyLine[0], storyLine[0], invalidMess, 3, 3);
+                            Choices(A_Choices[1], B_Choices[1]);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 2:
+                            Console.WriteLine(storyLine[1]);
+                            Choices(A_Choices[2], B_Choices[2]);
+                            id = GameChoices(10, 2, "", "", invalidMess, 5, 5);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 3:
+                            //  Console.WriteLine(storyLine[2]);
+                            id = GameChoices(5, 10, "", "", invalidMess, 2, 4);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 4:
+                            Console.WriteLine(storyLine[2]);
+                            goto case 5;
+                        case 5:
+                            //u arrivce at school
+                            Console.WriteLine(storyLine[3]);
+                            Choices(A_Choices[3], B_Choices[3]);
+                            id = GameChoices(2, 10, "", "", invalidMess, 6, 6);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 6:
+                            Console.WriteLine(storyLine[4]);
+                            Choices(A_Choices[4], B_Choices[4]);
+                            id = GameChoices(10, 2, "", "", invalidMess, 7, 7);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 7:
+                            //5
+                            Console.WriteLine(storyLine[5]);
+                            Choices(A_Choices[5], B_Choices[5]);
+                            id = GameChoices(2, 10, storyLine_A[0], storyLine_B[0], invalidMess, 8, 8);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 8:
+                            //6
+                            Console.WriteLine(storyLine[6]);
+                            Choices(A_Choices[6], B_Choices[6]);
+                            id = GameChoices(2, 10, storyLine_A[1], storyLine_B[1], invalidMess, 9, 9);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 9:
+                            //7
+                            Console.WriteLine(storyLine[7]);
+                            Choices(A_Choices[7], B_Choices[7]);
+                            id = GameChoices(2, 10, "", "", invalidMess, 10, 10);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 10:
+
+                            //8
+                            Console.WriteLine(storyLine[8]);
+                            Choices(A_Choices[8], B_Choices[8]);
+                            id = GameChoices(2, 10, "", "", invalidMess, 11, 11);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            break;
+                        case 11:
+                            Console.WriteLine(storyLine[9]);
+                            Choices(A_Choices[9], B_Choices[9]);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            id = Endings( storyLine[10], storyLine[11], player , invalidMess);
+                            Console.WriteLine("Love Points: " + lvPTs);
+                            goto case 12;
+                        case 12:
+                            break;
+                        default:
+                            break;
 
 
-                //3
-                Console.WriteLine(storyLine[3]);
-                Choices(A_Choices[3], B_Choices[3]);
-                GameChoices( 2, 10, "", "", invalidMess);
+                    }
 
-                //4
-                Console.WriteLine(storyLine[4]);
-                Choices(A_Choices[4], B_Choices[4]);
-               GameChoices(10, 2, "", "", invalidMess);
+                    if (id == 12) break;
 
 
-                //5
-                Console.WriteLine(storyLine[5]);
-                Choices(A_Choices[5], B_Choices[5]);
-                GameChoices( 2, 10, storyLine_A[0], storyLine_B[0], invalidMess);
-
-                //6
-                Console.WriteLine(storyLine[6]);
-                Choices(A_Choices[6], B_Choices[6]);
-
-                GameChoices(2, 10, storyLine_A[1], storyLine_B[1], invalidMess);
-
-
-                //7
-                Console.WriteLine(storyLine[7]);
-        
-                Choices(A_Choices[7], B_Choices[7]);
-                GameChoices(2, 10, "", "", invalidMess);
-
-
-                //8
-                Console.WriteLine(storyLine[8]);
-                Choices(A_Choices[8], B_Choices[8]);
-               GameChoices( 2, 10, "", "", invalidMess);
-
-
-                Console.WriteLine(storyLine[9]);
-                Choices(A_Choices[9], B_Choices[9]);
-
-              
-                Endings(ref lvPT, storyLine[10], storyLine[11], player, invalidMess);
-
-
-
-                YesOrNo("\nI see. That's a shame.", "\nI'll take that as a No. Bye! ^^");
-
-                
-            }//whole program while loop
-
+                }
+            }
         }
-        //Note: used ref in mainLovePts to reduce method GameChoices declaration directly to the main method's int ecquivalent 'lovePts'
 
 
-    
-     
-        public static void GameChoices(int ptsA, int ptsB, string dialougeA, string dialougeB, string invChoice)
+
+        public static int GameChoices(int ptsA, int ptsB, string dialougeA, string dialougeB, string invChoice, int nextRouteA, int nextRouteB)
         {
-            int lvPT = busPro.getlovePts();
             string choice;
             while (true)
             {
-               
                 Console.Write("Choice: ");
                 choice = Console.ReadLine().ToLower();
 
-                string pointsProcess = busPro.pointAllocation (ref lvPT, ptsA, ptsB, choice);
+                string pointsProcess = busPro.pointAllocation(ref lvPTs, ptsA, ptsB, choice);
 
                 if (pointsProcess == "a" || pointsProcess == "A")
                 {
                     Console.WriteLine(dialougeA);
-                    break;
+                    return nextRouteA;
+
                 }
                 else if (pointsProcess == "b" || pointsProcess == "B")
                 {
                     Console.WriteLine(dialougeB);
-                    break;
+                    return nextRouteB;
+
                 }
                 else
                 {
@@ -132,45 +160,14 @@ namespace TakeMyHeart_ConsoleGameProject
                     continue;
 
 
-                    
+
                 }
 
             }
         }
 
 
-           public static void GameChoicesVer2(int ptsA, int ptsB, string dialougeA, string additionalA,string additionalB, string dialougeB, string invChoice)
-        {
-            int lvPT = busPro.getlovePts();
-            while (true)
-            {
-                Console.Write("Choice: ");
-                string choice = Console.ReadLine().ToLower();
 
-                string pointsProcess = busPro.pointAllocation(ref lvPT, ptsA, ptsB, choice);
-
-                if (pointsProcess == "A" || pointsProcess == "a")
-                {
-                    Console.WriteLine(dialougeA);
-                    Console.WriteLine(additionalA);
-                    Console.WriteLine(additionalB);
-
-
-                    GameChoices(10, 2, "", "", invChoice);
-                    break;
-                }
-                else if (pointsProcess == "B" || pointsProcess == "b")
-                {
-                    Console.WriteLine(dialougeB);
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine(invChoice);
-                    continue;
-                }
-            }
-        }
 
         public static void YesOrNo(string no, string otherAnswer)
         {
@@ -185,17 +182,18 @@ namespace TakeMyHeart_ConsoleGameProject
                     Console.Write("Choice: ");
                     restartChoice = Console.ReadLine().ToLower();
 
-                    busPro.YesChoiceProcess(restartChoice) ;
+
+                    busPro.YesChoiceProcess(restartChoice);
 
 
-                        break;
+                    break;
 
                 }
                 else if (restartChoice == "n" || restartChoice == "N")
                 {
                     Console.WriteLine(no);
                     Environment.Exit(0);
-                   
+
                 }
 
                 else
@@ -206,18 +204,21 @@ namespace TakeMyHeart_ConsoleGameProject
             }
         }
 
+
         public static void Choices(string a, string b)
         {
             Console.WriteLine(a);
             Console.WriteLine(b);
         }
 
-        public static void Endings(ref int mainLovePts, string badEnding, string goodEnding, string player, string invChoice)
+        public static int Endings( string badEnding, string goodEnding, string player, string invChoice)
         {
             while (true)
             {
                 Console.Write("Choice: ");
+                int mainLovePts = lvPTs;
                 string choice = Console.ReadLine().ToLower();
+
                 if (mainLovePts < 60)
                 {
                     //Bad End
@@ -248,8 +249,12 @@ namespace TakeMyHeart_ConsoleGameProject
                     Console.WriteLine("\n" + goodEnding);
                     Console.WriteLine("You've Reached a Good End(?) :) ♥ . Would you like to start over? \nY/N");
                 }
+              
                 Console.WriteLine("\nFinal Love Points: " + mainLovePts);
-                break;
+                lvPTs = 0;
+                YesOrNo("\nI see. That's a shame.", "\nI'll take that as a No. Bye! ^^");
+                return 12;
+
             }
         }
 
@@ -287,5 +292,11 @@ namespace TakeMyHeart_ConsoleGameProject
 
         //update prog as of bl/dl and ui:
         //fixed invalid choices point accumulation bug; fixed continued accumulation of points upon restarting; added OR in if else choices
+
+        // add search feature, a guide search for the choices for bad and good end
+        //add main menu 
+        // see maams menu list for reference
+        // fix yes or no
+        //if any other than y or n were typed it will exit
     }
 }
