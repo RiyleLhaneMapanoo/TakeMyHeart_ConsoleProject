@@ -6,11 +6,11 @@ namespace TMH_BusinessDataLogic
 
     public class THMProcess
     {
-        
-       
 
-        public THM_Info dataLogic = new THM_Info();
-       
+
+
+        public THM_DataService dataLogic = new THM_DataService();
+
         public string pointAllocation(ref int mainLovePts, int ptsA, int ptsB, string choice)
         {
 
@@ -30,14 +30,15 @@ namespace TMH_BusinessDataLogic
             }
         }
 
-        public string[] getstoryLineLibrary(){
-           
+        public string[] getstoryLineLibrary()
+        {
+
             return dataLogic.storyLineLibrary();
 
-          }
+        }
         public string[] getchoicesALibrary()
         {
-           
+
 
             return dataLogic.choicesALibrary();
         }
@@ -49,7 +50,8 @@ namespace TMH_BusinessDataLogic
             return dataLogic.choicesBLibrary();
         }
 
-        public  string[] getStoryDialougeA() {
+        public string[] getStoryDialougeA()
+        {
 
             return dataLogic.StoryDialougeA();
         }
@@ -63,25 +65,28 @@ namespace TMH_BusinessDataLogic
 
         public int getlovePts()
         {
-            return dataLogic.getlovePts();
+
+            return dataLogic.getLovePts();
         }
 
         public int setLovePts(int loveP)
         {
-            return dataLogic.setlovePts(loveP);
+
+            return dataLogic.setLovePts(loveP);
         }
 
-        public bool YesChoiceProcess(string restartChoice) {
+        public bool YesChoiceProcess(string restartChoice)
+        {
 
             if (restartChoice == "a" || restartChoice == "A")
             {
                 setLovePts(0);
-                return true; // Fresh start
+                return true;
             }
             else if (restartChoice == "b" || restartChoice == "B")
             {
                 setLovePts(0);
-                return false; // Keep records
+                return false;
             }
 
             return false;
@@ -91,7 +96,7 @@ namespace TMH_BusinessDataLogic
         }
 
         //invalid choice
-        
+
 
 
         public string getName()

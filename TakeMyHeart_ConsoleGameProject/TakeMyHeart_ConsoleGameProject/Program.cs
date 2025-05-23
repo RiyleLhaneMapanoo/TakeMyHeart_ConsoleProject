@@ -13,11 +13,16 @@ namespace TakeMyHeart_ConsoleGameProject
         static void Main(string[] args)
         {
 
-            string[] storyLine = busPro.getstoryLineLibrary();
-            string[] A_Choices = busPro.getchoicesALibrary();
-            string[] B_Choices = busPro.getchoicesBLibrary();
-            string[] storyLine_A = busPro.getStoryDialougeA();
-            string[] storyLine_B = busPro.getStoryDialougeB();
+            string[] storyLine = new string[15];
+            storyLine = busPro.getstoryLineLibrary();
+            string[] A_Choices = new string[10];
+            A_Choices = busPro.getchoicesALibrary();
+            string[] B_Choices = new string[10];
+            B_Choices = busPro.getchoicesBLibrary();
+            string[] storyLine_A = new string[10];
+            storyLine_A = busPro.getStoryDialougeA();
+            string[] storyLine_B = new string[10];
+            storyLine_B = busPro.getStoryDialougeB();
 
             string invalidMess = busPro.InvalidChoice();
 
@@ -112,7 +117,7 @@ namespace TakeMyHeart_ConsoleGameProject
                             Console.WriteLine(storyLine[9]);
                             Choices(A_Choices[9], B_Choices[9]);
                             Console.WriteLine("Love Points: " + lvPTs);
-                            id = Endings( storyLine[10], storyLine[11], player , invalidMess);
+                            id = Endings(storyLine[10], storyLine[11], player, invalidMess);
                             Console.WriteLine("Love Points: " + lvPTs);
                             goto case 12;
                         case 12:
@@ -144,25 +149,23 @@ namespace TakeMyHeart_ConsoleGameProject
 
                 if (pointsProcess == "a" || pointsProcess == "A")
                 {
+                    // ADD THIS LINE - Save the updated points
+                    busPro.setLovePts(lvPTs);
                     Console.WriteLine(dialougeA);
                     return nextRouteA;
-
                 }
                 else if (pointsProcess == "b" || pointsProcess == "B")
                 {
+                    // ADD THIS LINE - Save the updated points
+                    busPro.setLovePts(lvPTs);
                     Console.WriteLine(dialougeB);
                     return nextRouteB;
-
                 }
                 else
                 {
                     Console.WriteLine(invChoice);
                     continue;
-
-
-
                 }
-
             }
         }
 
@@ -211,7 +214,7 @@ namespace TakeMyHeart_ConsoleGameProject
             Console.WriteLine(b);
         }
 
-        public static int Endings( string badEnding, string goodEnding, string player, string invChoice)
+        public static int Endings(string badEnding, string goodEnding, string player, string invChoice)
         {
             while (true)
             {
@@ -249,7 +252,7 @@ namespace TakeMyHeart_ConsoleGameProject
                     Console.WriteLine("\n" + goodEnding);
                     Console.WriteLine("You've Reached a Good End(?) :) ♥ . Would you like to start over? \nY/N");
                 }
-              
+
                 Console.WriteLine("\nFinal Love Points: " + mainLovePts);
                 lvPTs = 0;
                 YesOrNo("\nI see. That's a shame.", "\nI'll take that as a No. Bye! ^^");

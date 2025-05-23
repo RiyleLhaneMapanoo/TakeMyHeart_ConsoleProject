@@ -4,8 +4,8 @@ using System.Xml.Linq;
 namespace THM_Data;
 
 
-    public class THM_Info
-    {
+    public class THM_InMemory : IThm_DataService
+{
     //public static int lovePts;
     public player Player = new player();
 
@@ -72,7 +72,7 @@ namespace THM_Data;
         B_choices[7] = "B.) \"Did I ask?\"";
         B_choices[8] = "B.) \"What are you staring at? \"You narrowed your eyes and stared back at him. You shortly looked away after, feeling embarrassed.  Even though he was a little odd, you couldn’t deny it—his looks were still something you couldn’t just brush off.\n";
         B_choices[9] = "B.) Are you crazy? Why the hell would I spend time with you? \" You rudely say to him as you wear your bag and walked out the door. \n";
-
+        B_choices[10] = "";
 
 
         return B_choices;
@@ -107,20 +107,19 @@ namespace THM_Data;
         Player.lovePts = 0;
     }
 
-    public int getlovePts()
-    {
-        return Player.lovePts;
-    }
-
-    public int setlovePts(int value)
-    {
-        return Player.lovePts = value;
-    }
 
     public string getName() {
         return Player.name;
     }
 
-   
+    public int getLovePts()
+    {
+        return Player.lovePts;
+    }
+
+    public int  setLovePts(int value)
+    {
+       return   Player.lovePts = value;
+    }
 }
 
