@@ -11,8 +11,8 @@ namespace THM_Data
     {
 
         public void addPlayer(String name);
-        public int getLovePts();
-        public int setLovePts(int value);
+        public int getlovePts();
+        public int setlovePts(int value);
 
         public string getName();
 
@@ -24,6 +24,21 @@ namespace THM_Data
         public string[] StoryDialougeA();
         public string[] StoryDialougeB();
 
+        public int setfinalLovePts(int finalLovepts);
 
-    }
+        public int getfinalLovePts();
+
+        public void addHighScore(int highScoreSlot, int highscoreNum, string playerName);
+
+        public List<(int highScoreSlot, int highscoreNum, string playerName)> getHighScoreList();
+
+        public void removeItemonHSList();
+       //s public int highscoreslotIncrementor();
+
+
+        //for tuple list 
+        //   public void SaveGame(int slotId, int lovePoints, List<int> storyProgress);
+
+
+        }
 }

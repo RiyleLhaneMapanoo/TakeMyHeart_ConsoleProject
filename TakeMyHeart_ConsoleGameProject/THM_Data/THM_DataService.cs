@@ -12,8 +12,8 @@ namespace THM_Data
         public THM_DataService() { 
         
            // dataLogic = new THM_textMemoryDataService();
-           // dataLogic = new THM_InMemory();
-           dataLogic = new THM_JSONDataService();
+            dataLogic = new THM_InMemory();
+          // dataLogic = new THM_JSONDataService();
         }
 
 
@@ -21,10 +21,10 @@ namespace THM_Data
             dataLogic.addPlayer(name);
         }
         public int getLovePts() {
-            return dataLogic.getLovePts();
+            return dataLogic.getlovePts();
         }
         public int setLovePts(int value) {
-            return dataLogic.setLovePts(value);
+            return dataLogic.setlovePts(value);
         }
         public string getName() {
             return dataLogic.getName();
@@ -45,5 +45,26 @@ namespace THM_Data
             return dataLogic.StoryDialougeB();
         }
 
-    }
+        public int setfinalLovePts(int finalLovepts)
+        {
+            return dataLogic.setfinalLovePts(finalLovepts);
+        }
+        public int getfinalLovePts()
+        {
+            return dataLogic.getfinalLovePts();
+        }
+        public void addHighScore(int highScoreSlot, int highscoreNum, string playerName)
+        {
+            dataLogic.addHighScore(highScoreSlot, highscoreNum, playerName);
+        }
+        public List<(int highScoreSlot, int highscoreNum, string playerName)> getHighScoreList()
+        {
+            return dataLogic.getHighScoreList();
+        }
+
+        public void removeItemonHSList()
+        {
+            dataLogic.removeItemonHSList();
+        }
+        }
 }

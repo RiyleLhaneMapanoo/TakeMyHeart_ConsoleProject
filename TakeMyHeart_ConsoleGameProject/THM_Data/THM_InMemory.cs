@@ -6,10 +6,15 @@ namespace THM_Data;
 
     public class THM_InMemory : IThm_DataService
 {
-    //public static int lovePts;
+    //for player
     public player Player = new player();
+    //for game system
 
-    public int lovePts=0;
+    private static GameSystem gs = new GameSystem();
+
+    //int highScoreSlot = 0;
+    // redundant/unused
+    //public int lovePts=0;
     public string[] storyLineLibrary()
     {
         string[] storyLine = new string[15];
@@ -104,7 +109,7 @@ namespace THM_Data;
     {
 
         Player.name = name;
-        Player.lovePts = 0;
+       // Player.lovePts = 0;
     }
 
 
@@ -112,14 +117,45 @@ namespace THM_Data;
         return Player.name;
     }
 
-    public int getLovePts()
+    public int getlovePts()
     {
         return Player.lovePts;
     }
 
-    public int  setLovePts(int value)
+    public int  setlovePts(int value)
     {
        return   Player.lovePts = value;
     }
+
+    public int setfinalLovePts(int finalLovepts) {
+
+        return Player.finalLovePts = finalLovepts;
+
+    }
+    public int getfinalLovePts()
+    {
+
+        return Player.finalLovePts;
+    }
+
+
+    public void addHighScore(int highScoreSlot, int highscoreNum, string playerName)
+    {
+        gs.HighScoreList.Add((highScoreSlot, highscoreNum, playerName));
+    }
+
+    public List<(int highScoreSlot, int highscoreNum, string playerName)> getHighScoreList()
+    {
+        return gs.HighScoreList;
+    }
+
+    public void removeItemonHSList()
+    {
+
+        getHighScoreList().RemoveAt(getHighScoreList().Count - 1);
+    }
+
 }
+
+
 

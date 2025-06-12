@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="ActionsAndStuff.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\THM_Data\THM_Data.csproj" />
   </ItemGroup>
 
