@@ -10,7 +10,7 @@ namespace THM_Data
     internal interface IThm_DataService
     {
 
-        public void addPlayer(String name);
+        public string addPlayer(String name);
         public int getlovePts();
         public int setlovePts(int value);
 
@@ -24,13 +24,14 @@ namespace THM_Data
         public string[] StoryDialougeA();
         public string[] StoryDialougeB();
 
+        public string[] routesData();
         public int setfinalLovePts(int finalLovepts);
 
         public int getfinalLovePts();
 
-        public void addHighScore(int highScoreSlot, int highscoreNum, string playerName);
+        public void addHighScore(int highscoreNum, string playerName);
 
-        public List<(int highScoreSlot, int highscoreNum, string playerName)> getHighScoreList();
+        public List<(int highscoreNum, string playerName)> getPlayerScoreList();
 
         public void removeItemonHSList();
        //s public int highscoreslotIncrementor();

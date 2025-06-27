@@ -1,4 +1,5 @@
 ﻿using Common_Player;
+using System;
 using System.Drawing;
 using THM_Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -13,7 +14,7 @@ namespace TMH_BusinessDataLogic
 
         public THM_DataService dataLogic = new THM_DataService();
 
-        int highScoreSlot = 0;
+        //int highScoreSlot = 0;
 
         public string pointAllocation(ref int mainLovePts, int ptsA, int ptsB, string choice)
         {
@@ -67,6 +68,11 @@ namespace TMH_BusinessDataLogic
             return dataLogic.StoryDialougeB();
         }
 
+        public string[] getroutesData()
+        {
+            return dataLogic.routesData();
+        }
+
         //keep the records or restart all over
 
         public int getlovePts()
@@ -79,42 +85,15 @@ namespace TMH_BusinessDataLogic
             return dataLogic.setLovePts(loveP);
         }
 
-        //public bool YesChoiceProcess(string restartChoice)
-        //{
-
-
-
-        //    if (restartChoice == PlayerChoice.A.ToString().ToLower())
-        //    {
-        //        setLovePts(0);
-
-        //        return true; // Fresh start
-        //    }
-        //    else if (restartChoice == PlayerChoice.B.ToString().ToLower())
-        //    {
-        //        setLovePts(0);
-        //        return false; // Keep records
-        //    }
-
-        //    return false;
-
-
-
-        //}
-
-        //invalid choice
-
-
-
         public string getName()
         {
             return dataLogic.getName();
 
         }
 
-        public void addP(string name)
+        public string addP(string name)
         {
-            dataLogic.addPlayer(name);
+            return dataLogic.addPlayer(name);
 
         }
         public string InvalidChoice()
@@ -131,15 +110,15 @@ namespace TMH_BusinessDataLogic
             return dataLogic.getfinalLovePts();
         }
 
-
-        public void addHighScore(int highScoreSlot, int highscoreNum, string playerName)
+        //adjusted june 21
+        public void addHighScore( int highscoreNum, string playerName)
         {
-            dataLogic.addHighScore(highScoreSlot, highscoreNum, playerName);
+            dataLogic.addHighScore( highscoreNum, playerName);
         }
-
-        public List<(int highScoreSlot, int highscoreNum, string playerName)> getHighScoreList()
+        //adjusted june 21
+        public List<( int highscoreNum, string playerName)> getPlayerScoreList()
         {
-            return dataLogic.getHighScoreList();
+            return dataLogic.getPlayerScoreList();
         }
 
 
@@ -147,6 +126,8 @@ namespace TMH_BusinessDataLogic
         {
             dataLogic.removeItemonHSList();
         }
+
+
 
         //redundant now that sortHighscoreslotList is implemented
         //public int highscoreslotIncrementor()
@@ -157,10 +138,12 @@ namespace TMH_BusinessDataLogic
 
         //}
 
-        public List<(int highScoreSlot, int highscoreNum, string playerName)> SortHighScoreList()
+        //adjusted june 21
+        public List<(int highscoreNum, string playerName)> SortHighScoreList()
         {
-         
-            var highScoreList = getHighScoreList();
+
+            //int highScoreSlott = highScoreSlot;
+            var highScoreList = getPlayerScoreList();
 
             //apparently you need to have a comparer if you were going to sort a list
             // and y represent two elements from the list that are being compared during the sort. you can use other letters/names
@@ -194,7 +177,7 @@ namespace TMH_BusinessDataLogic
                 return scoreComparison;
             });
 
-            // ✅ Truncate list if it has more than 10 entries
+           
             if (highScoreList.Count > 10)
             {
                 highScoreList = highScoreList.Take(10).ToList();
@@ -202,7 +185,7 @@ namespace TMH_BusinessDataLogic
             //for highscore slot; reassigns item list base on sort order
             for (int i = 0; i < highScoreList.Count; i++)
             {
-                highScoreList[i] = (i + 1, highScoreList[i].highscoreNum, highScoreList[i].playerName);
+                highScoreList[i] = (highScoreList[i].highscoreNum, highScoreList[i].playerName);
                 //how does this update the highscore slot without using the highScoreSlot parameter? apparently the "i + 1" stands for it and the highScoreList[i].highscoreNum, highScoreList[i].playerName
                 //Why It Doesn’t Need highScoreSlot Parameter? its because the tuple list's first value is being rewritten like this nlng: (oldSlot, score, name) → (newSlot, sameScore, sameName)
                 //Can’t we just change the highScoreSlot value in the tuple (e.g., by accessing the parameter or field directly) instead of rebuilding the entire tuple? No, because tuples in C# are immutable, meaning their individual elements can’t be changed directly once the tuple is created.

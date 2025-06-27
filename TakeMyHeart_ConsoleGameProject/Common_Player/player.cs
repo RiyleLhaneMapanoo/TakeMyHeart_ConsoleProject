@@ -13,9 +13,10 @@ namespace Common_Player
     public class GameSystem
     {
         //tuple
-        public List<(int highScoreSlot, int highscoreNum, string playerName)> HighScoreList { get; set; } = new List<(int, int, string)>();
+        public List<(int highscoreNum, string playerName)> HighScoreList { get; set; } = new List<( int, string)>();
+       
     }
-   
+
 
 }
 

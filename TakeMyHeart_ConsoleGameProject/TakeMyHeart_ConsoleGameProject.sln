@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THM_Data", "THM_Data\THM_Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common_Player", "Common_Player\Common_Player.csproj", "{45C850D7-4CC4-4136-B5B6-B9425E542987}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THM_GUI", "THM_GUI\THM_GUI.csproj", "{0165BF4F-B3BF-4170-9BB9-BF917BA04687}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{45C850D7-4CC4-4136-B5B6-B9425E542987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45C850D7-4CC4-4136-B5B6-B9425E542987}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45C850D7-4CC4-4136-B5B6-B9425E542987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0165BF4F-B3BF-4170-9BB9-BF917BA04687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0165BF4F-B3BF-4170-9BB9-BF917BA04687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0165BF4F-B3BF-4170-9BB9-BF917BA04687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0165BF4F-B3BF-4170-9BB9-BF917BA04687}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

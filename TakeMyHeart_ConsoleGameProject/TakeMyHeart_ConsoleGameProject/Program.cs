@@ -21,11 +21,12 @@ namespace TakeMyHeart_ConsoleGameProject
         public static string[] B_Choices = busPro.getchoicesBLibrary();
         public static string[] storyLine_A = busPro.getStoryDialougeA();
         public static string[] storyLine_B = busPro.getStoryDialougeB();
+        public static string[] getroutesData = busPro.getroutesData();
         public static string Pname;
 
         public static string invalidMess = busPro.InvalidChoice();
         public static string[] mainmenuUI = { "[1] Start ", "[2] High Score Records ", "[3] Guide ", "[4] Exit" };
-        public static string[] ingameUI = { "[1] Main Menu ", "[2] Exit" };
+        public static string[] ingameUI = { "[1] Main Menu ", "[2] Exit Game" };
 
        
 
@@ -39,15 +40,13 @@ namespace TakeMyHeart_ConsoleGameProject
 
         }
         public static void MainCodeLoop() {
-
             Console.WriteLine("♥ Take My Heart ♥ \n");
             Console.WriteLine("\n♥ Recommended to play in a wide console ♥ \n");
+            while (true)
+            {
+               
             MainUIChoices();
             double playerChoice = playerChoiceNumber();
-
-            while (playerChoice != 4)
-            {
-
                 switch (playerChoice)
                 {
                     case 1:
@@ -59,7 +58,7 @@ namespace TakeMyHeart_ConsoleGameProject
                         displayHighscoreList();
                         break;
                     case 3:
-                        Console.WriteLine("♥ Guide Test ♥");
+                        search();
                         break;
                     case 4:
                         //for safety measures nrin; in case exit debugs occurs 
@@ -68,23 +67,16 @@ namespace TakeMyHeart_ConsoleGameProject
                     default:
                         Console.WriteLine("Was that a typo or something? If not then choose correctly >:[ ");
                         break;
-
+                  
                 }
 
-              
-                MainUIChoices();
-                playerChoice = playerChoiceNumber();
             }
-
-
-
-
         }
         public static void StartMainGame()
         {
 
             Console.WriteLine("\n"+"Choose wisely—you only get one chance ;)" +"\n");
-            Console.WriteLine("Tips: Those are some oddly place capital letters...hm" + "\n");
+            Console.WriteLine("Tip: Those are some oddly place capital letters...hm" + "\n");
 
 
             busPro.setLovePts(0);
@@ -97,9 +89,9 @@ namespace TakeMyHeart_ConsoleGameProject
                 Console.Write("Name: ");
                 Pname = Console.ReadLine();
                 busPro.addP(Pname);
-                Pname = busPro.getName();
+              //  Pname = ;
 
-                Console.WriteLine($"\nI see! Welcome {Pname}. Goodluck ;) ");
+                Console.WriteLine($"\nI see! Welcome {busPro.getName()}. Goodluck ;) ");
                 Choices(A_Choices[0], B_Choices[0]);
                 InGameChoicesUI();
 
@@ -126,6 +118,7 @@ namespace TakeMyHeart_ConsoleGameProject
                             
                             break;
                         case 3:
+                            //GameChoices(int ptsA, int ptsB, string dialougeA, string dialougeB, string invChoice, int nextRouteA, int nextRouteB)
                             //  Console.WriteLine(storyLine[2]);
                             InGameChoicesUI();
                             id = GameChoices(5, 10, "", "", invalidMess, 2, 4);
@@ -168,7 +161,8 @@ namespace TakeMyHeart_ConsoleGameProject
                         case 9:
                             //7
                             Console.WriteLine(storyLine[7]);
-                            Choices(A_Choices[7], B_Choices[7]);
+
+                            Choices(A_Choices[7].Replace("placeholder", busPro.getName()), B_Choices[7]);
                             InGameChoicesUI();
                             id = GameChoices(2, 10, "", "", invalidMess, 10, 10);
                             Console.WriteLine("Love Points: " + setlvPTs);
@@ -186,7 +180,7 @@ namespace TakeMyHeart_ConsoleGameProject
                             Console.WriteLine(storyLine[9]);
                             Choices(A_Choices[9], B_Choices[9]);
                             // setting lvpts here to final lvpts
-                            finalLovePts = getfinalLovePts;
+                          //  finalLovePts = getfinalLovePts;
                             finalLovePts = busPro.setLovePts(setlvPTs);
 
                            
@@ -194,11 +188,8 @@ namespace TakeMyHeart_ConsoleGameProject
                             Console.WriteLine("Love Points: " + finalLovePts);
 
                             //add item on highscore list 
-                            busPro.addHighScore(0, finalLovePts, Pname);
+                            busPro.addHighScore( finalLovePts, Pname);
 
-
-                         //   var testList = busPro.getHighScoreList();
-                         //   Console.WriteLine($"[TEST] Highscore count: {testList.Count}");
                             id = Endings(storyLine[10], storyLine[11], Pname, invalidMess);
                             
                             goto case 12;
@@ -238,8 +229,14 @@ namespace TakeMyHeart_ConsoleGameProject
         public static double playerChoiceNumber() {
 
             Console.Write("\nChoice: ");
-            double playerChoice = Convert.ToDouble(Console.ReadLine().Trim());
-            return playerChoice;
+            try
+            {
+                return Convert.ToDouble(Console.ReadLine().Trim());
+            }
+            catch
+            {
+                return -1; 
+            }
         }
 
         public static string playerChoiceLetter() {
@@ -248,9 +245,6 @@ namespace TakeMyHeart_ConsoleGameProject
             return choice;
 
         }
-
-       
-
         public static int GameChoices(int ptsA, int ptsB, string dialougeA, string dialougeB, string invChoice, int nextRouteA, int nextRouteB)
         {
 
@@ -276,15 +270,29 @@ namespace TakeMyHeart_ConsoleGameProject
                     else if (pointsProcess == "b")
                     {
                         Console.WriteLine(dialougeB);
-                        Console.WriteLine(dialougeB);
+                       // Console.WriteLine(dialougeB);
                         return nextRouteB;
 
                     }
                     else if (int.TryParse(choice, out int number) && number >= 1 && number <= 2) //this tries to convert the string choice into an integer and if its successful it converts it to thats 'number'.
                 {
-                    Console.WriteLine("This is 1-4");
 
-                    continue;  
+                    if (number == 1)
+                    {
+                        
+                        
+                        Console.Clear();
+                        Console.WriteLine("\nYour last progress is now lost. I warned you \n");
+                        MainCodeLoop();
+                        
+                    }
+                    if (number == 2)
+                    {
+                        Console.WriteLine("\nShame. oh well. \n");
+                        Environment.Exit(0);
+                    }
+                    else
+                        continue;  
                   }
                 else
                     {
@@ -296,11 +304,7 @@ namespace TakeMyHeart_ConsoleGameProject
                 }
             
         
-
-
-
-
-        public static void YesOrNo(string no, string otherAnswer)
+        public static void YesOrNo()
         {
             while (true)
             {
@@ -321,16 +325,16 @@ namespace TakeMyHeart_ConsoleGameProject
                 else if (restartChoice == "n" )
                 {
 
-                    Console.WriteLine(no+ "\n");
+                  //  Console.WriteLine(no+ "\n");
                     Console.Clear();
-                   // MainCodeLoop();
-                    return;
+                    MainCodeLoop();
+                  //  return;
 
                 }
 
                 else
                 {
-                    Console.WriteLine(otherAnswer);
+                    Console.WriteLine("\nI'll take that as a bye ^^");
                     Environment.Exit(0);
                 }
                 break;
@@ -385,7 +389,7 @@ namespace TakeMyHeart_ConsoleGameProject
               
                 Console.WriteLine("\nFinal Love Points: " + mainLovePts);
           
-                YesOrNo("\nI see. That's a shame. ", "\nI'll take that as a bye ^^");
+                YesOrNo();
                 return 12;
 
             }
@@ -416,6 +420,7 @@ namespace TakeMyHeart_ConsoleGameProject
 
         public static void displayHighscoreList() {
             var highscoreList = busPro.SortHighScoreList(); 
+            int highScoreSlot = 1;
 
             if (highscoreList.Count == 0)
             {
@@ -426,10 +431,52 @@ namespace TakeMyHeart_ConsoleGameProject
             foreach (var entry in highscoreList)
             {
                  
-                Console.WriteLine($"Slot {entry.highScoreSlot}: {entry.playerName} - {entry.highscoreNum} points");
+                Console.WriteLine($"Slot {highScoreSlot}: {entry.playerName} - {entry.highscoreNum} points");
+                highScoreSlot++;
             }
 
         }
+
+        public static void search()
+        {
+            while (true)
+            {
+                Console.WriteLine("Which section would you like to search?");
+                Console.WriteLine("[1] Routes");
+
+                double searchIn = playerChoiceNumber();
+                if (searchIn == 1)
+                {
+                    Console.WriteLine("\nTip: Notice anything with the dialogues?\n");
+                    Console.Write("\nSearch for Route Guide [Enter keyword] \n");
+
+                    string searchRoute = playerChoiceLetter();
+                    // string[] routeResult = busPro.getroutesData();
+                    if (searchRoute == "the fool")
+                    {
+                        Console.WriteLine("\n"+getroutesData[0]+ "\n");
+                        break;
+                    }
+                    else if (searchRoute == "the hanged man")
+                    {
+                        Console.WriteLine("\n"+getroutesData[1]+ "\n");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Keyword Invalid\n");
+                        break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. ");
+                }
+
+            }
+
+
+            }
 
         //List of stuff to implement:
         //remove exclusive method GameChoicesVer2 for choice 2; inefficient

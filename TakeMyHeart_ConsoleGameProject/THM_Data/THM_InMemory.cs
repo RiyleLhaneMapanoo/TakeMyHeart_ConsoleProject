@@ -10,7 +10,7 @@ namespace THM_Data;
     public player Player = new player();
     //for game system
 
-    private static GameSystem gs = new GameSystem();
+    public GameSystem gs = new GameSystem();
 
     //int highScoreSlot = 0;
     // redundant/unused
@@ -35,6 +35,9 @@ namespace THM_Data;
         //GoodEnd
         storyLine[11] = "You returned home. Exhausted. You still have that C# program project assignment that you have to do. Why did you choose this course? Did you do it because you liked it?\r\nOr did you just do it because your parents told you so and you have no idea what you want to do with your life so you just went along with whatever you think makes money\r\nthe most? You lay on your bed staring at the ceiling wondering what the future holds. You fail to notice red eyes staring at you from your window. \r\n";
 
+        storyLine[12] = "...";
+
+
         return storyLine;
 
     }
@@ -47,16 +50,17 @@ namespace THM_Data;
         A_choices[0] = "A.) Thank you";
 
         //Main storyLine
-        A_choices[1] = "A.) Walk to school";
-        A_choices[2] = "A.) \"Meh. not my type\"";
+        A_choices[1] = "A.) walk To school";
+        A_choices[2] = "A.) \"meh. not my type\"";
         A_choices[3] = "A.) \"oh! sorry.\"";
         A_choices[4] = "A.)\"...it's ok. don't do it again next time i guess.\"";
-        A_choices[5] = "A.)\"ah, yes! are you in this class too?\"";
-        A_choices[6] = "A.)\"Sure... I wouldn't mind,\" you replied, your cheeks heating up as you tucked a strand of hair behind your ear. You can't help it. There's just something in him that draws you in.";
-        A_choices[7] = $"A.) \"It's nice to meet you Ren! My name is {getName()}\" You smiled back. Your cheeks flushed and heart beating fast. It skipped a beat again. if this continues you might\r\nactually die of a heart attack.";
-        A_choices[8] = "A.)\"W-what is it? Is there something on my face?\" You ask with embarrasment and lifted your hand to check your face. You felt your heart being squeezed. With emotion? or with something else? You didn't know.";
-        A_choices[9] = "A.)\"...\" You stay silent. Your face red. Your heart beating at record speed. Is this normal?. Your heart eased just for a moment.";
-        A_choices[10] = "";
+        A_choices[5] = "A.)\"ah, yes! are you in tHis class too?\"";
+        A_choices[6] = "A.)\"surE... i wouldn't mind,\" you replied, your cheeks Heating up as you tucked a strand of hAir behind your ear. You caN't help it. There's just somethinG in him that draws you in.";
+        A_choices[7] = "A.) \"it's nice to meet you Ren! My name is placeholder\" You smiled back. your chEeks flusheD and heart beating fast. it skipped a beat again. if this continues you might\r\nactually die of a heart attack.";
+        A_choices[8] = "A.)\"w-what is it? is there something on my face?\" you ask with eMbarrasment and lifted your hand to check your fAce. you felt your heart beiNg squeezed. with emotion? or with something else? you didn't know.";
+        A_choices[9] = "A.)\"...\" you stay silent. your face red. your heart beating at record speed. is this normal?. your heart eased just for a moment.";
+       // A_choices[10] = "";
+        
 
         return A_choices;
     }
@@ -68,16 +72,16 @@ namespace THM_Data;
         B_choices[0] = "B.) uh..";
 
         //Main story line
-        B_choices[1] = "B.) Ride a pedicab";
-        B_choices[2] = "B.) \"He is pretty cute\"\n";
-        B_choices[3] = "B.) \"watch where you're going!\"";
+        B_choices[1] = "B.) ride a pedicab";
+        B_choices[2] = "B.) \"he is pretty cute\"\n";
+        B_choices[3] = "B.) \"waTcH wherE you're going!\"";
         B_choices[4] = "B.) \"oh no! no! it's my fault anyways. I'm really sorry too.\"";
         B_choices[5] = "B.) \"what's it to you?\"";
-        B_choices[6] = "B.) \"...\" You stay silent for a while before replying. \"No. I don't sit with weird people\" You said decisively. He looks normal. But there's just something not right with him.";
+        B_choices[6] = "B.) \"...\" You stay siLent for a while beFore replying. \"No. I dOn't sit with weird peOple\" You said decisiveLy. He looks normal. But there's just something not right with him.";
         B_choices[7] = "B.) \"Did I ask?\"";
         B_choices[8] = "B.) \"What are you staring at? \"You narrowed your eyes and stared back at him. You shortly looked away after, feeling embarrassed.  Even though he was a little odd, you couldn’t deny it—his looks were still something you couldn’t just brush off.\n";
         B_choices[9] = "B.) Are you crazy? Why the hell would I spend time with you? \" You rudely say to him as you wear your bag and walked out the door. \n";
-        B_choices[10] = "";
+       // B_choices[10] = "";
 
 
         return B_choices;
@@ -105,10 +109,43 @@ namespace THM_Data;
         return storyd_B;
     }
 
-    public void addPlayer(string name)
+   public string[] routesData()
     {
+        string[] route = new string[3];
 
+        string[] A_choices = choicesALibrary();
+        string[] B_choices = choicesBLibrary();
+
+        route[0] = "The Fool's Route:\n" +
+        $"1. {B_choices[0]} +10\n" +
+        $"2. {A_choices[1]} +10\n" +
+        "If A:\n" +
+        $"A.2) {A_choices[2]} +10\n" +
+        $"3. {B_choices[3]} +10\n" +
+        $"4. {A_choices[4]} +10\n" +
+        $"5. {B_choices[5]} +10\n" +
+        $"6. {B_choices[6]} +10\n" +
+        $"7. {B_choices[7]} +10\n" +
+        $"8. {B_choices[8]} +10\n";
+
+        route[1] = "The Hanged Man's Route:\n" +
+        $"1. {A_choices[0]} +5\n" +
+        $"2. {B_choices[1]} +5\n" +
+        "If A:\n" +
+        $"A.2) {B_choices[2]} +2\n" +
+        $"3. {A_choices[3]} +2\n" +
+        $"4. {B_choices[4]} +2\n" +
+        $"5. {A_choices[5]} +2\n" +
+        $"6. {A_choices[6]} +2\n" +
+        $"7. {A_choices[7]} +2\n" +
+        $"8. {A_choices[8]} +2\n";
+
+        return route;
+    }
+    public string addPlayer(string name)
+    {
         Player.name = name;
+        return Player.name;
        // Player.lovePts = 0;
     }
 
@@ -138,13 +175,13 @@ namespace THM_Data;
         return Player.finalLovePts;
     }
 
-
-    public void addHighScore(int highScoreSlot, int highscoreNum, string playerName)
+    //adjusted june 21
+    public void addHighScore( int highscoreNum, string playerName)
     {
-        gs.HighScoreList.Add((highScoreSlot, highscoreNum, playerName));
+        gs.HighScoreList.Add(( highscoreNum, playerName));
     }
-
-    public List<(int highScoreSlot, int highscoreNum, string playerName)> getHighScoreList()
+    //adjusted june 21
+    public List<(int highscoreNum, string playerName)> getPlayerScoreList()
     {
         return gs.HighScoreList;
     }
@@ -152,7 +189,7 @@ namespace THM_Data;
     public void removeItemonHSList()
     {
 
-        getHighScoreList().RemoveAt(getHighScoreList().Count - 1);
+        getPlayerScoreList().RemoveAt(getPlayerScoreList().Count - 1);
     }
 
 }
