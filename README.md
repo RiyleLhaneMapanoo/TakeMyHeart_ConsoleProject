@@ -1,5 +1,7 @@
 # TakeMyHeart_ConsoleProject
-A simple console dating sim game made in C# using VS Code. A project for integrative programming. 
+A simple arcade-style visual novel made in C# using VS Code. A project for integrative programming. 
+
+TW: Uncanny Valley
 
  ♥ Take My Heart ♥
 
@@ -7,12 +9,15 @@ You have a new handsome classmate, wow! But something doesn't feel right with hi
 
 Objective: Reach a Good End(?) :) <3 
 
-Features follows the CRUD concept:
+Features follows the CRUD/S concept:
 
-C  – Allows the player to enter a custom name.
+C  – Allows the player to enter a name and achieve a highscore.
 
 R – Displays choices and game progression based on the player's input.
 
 U  – Updates the love points based on player choices.
 
-D – Resets the game (deletes previous love points) when restarting.
+D – Resets the game when restarting.
+
+S - Allows for a search of a route guide.
+
