@@ -43,7 +43,6 @@
             label6 = new Label();
             pictureBox2 = new PictureBox();
             choice1 = new Panel();
-            lvptsLBL = new Label();
             storyPanel = new Panel();
             storyLineLBL = new Label();
             nextButt = new Button();
@@ -220,7 +219,6 @@
             // 
             // choice1
             // 
-            choice1.Controls.Add(lvptsLBL);
             choice1.Controls.Add(storyPanel);
             choice1.Controls.Add(nextButt);
             choice1.Controls.Add(pictureBox3);
@@ -228,16 +226,6 @@
             choice1.Name = "choice1";
             choice1.Size = new Size(1016, 643);
             choice1.TabIndex = 3;
-            // 
-            // lvptsLBL
-            // 
-            lvptsLBL.AutoSize = true;
-            lvptsLBL.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lvptsLBL.Location = new Point(30, 28);
-            lvptsLBL.Name = "lvptsLBL";
-            lvptsLBL.Size = new Size(65, 25);
-            lvptsLBL.TabIndex = 9;
-            lvptsLBL.Text = "label4";
             // 
             // storyPanel
             // 
@@ -314,7 +302,6 @@
             introPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             choice1.ResumeLayout(false);
-            choice1.PerformLayout();
             storyPanel.ResumeLayout(false);
             storyPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
