@@ -19,9 +19,29 @@ namespace THM_GUI
 
         private void startButt_Click(object sender, EventArgs e)
         {
-            mainGameFORM newForm = new mainGameFORM();  
-            newForm.Show();             
-            this.Hide();                  
+            mainGameFORM newForm = new mainGameFORM();
+            newForm.Show();
+            this.Hide();
+        }
+
+        private void hsButt_Click(object sender, EventArgs e)
+        {
+
+            highscoreUIForm newForm = new highscoreUIForm();
+            newForm.Show();
+            this.Hide();
+        }
+
+        private void guideButt_Click(object sender, EventArgs e)
+        {
+            guideUIForm newForm = new guideUIForm();
+            newForm.Show();
+            this.Hide();
+        }
+
+        private void exitButt_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -98,72 +98,97 @@ namespace THM_GUI
             switch (currentRouteIndex)
             {
                 case 1:
+                    updateCG("choiceOneCG");
                     choicesButton(A_Choices[1], B_Choices[1], aButt, bButt);
                     currentRouteIndex = GameChoices(choice, aButt, bButt, 5, 10, 3, 3, storyLine[0] , "", "");
-                    
-                    lvptsLBL.Text = setlvPTs.ToString();
                     break;
-
                 case 2:
                     
                     currentRouteIndex = GameChoices(choice, aButt, bButt, 10, 2, 5, 5, storyLine[1], "", "");
+                    updateCG("wtsCG");
                     choicesButton(A_Choices[2], B_Choices[2], aButt, bButt);
-                   
-                    lvptsLBL.Text = setlvPTs.ToString();
                     break;
 
                 case 3:
-                    
-                        currentRouteIndex = GameChoices(choice, aButt, bButt, 5, 10, 2, 4, "", "", "");
-                   
+                    string result = busPro.pointAllocation(ref setlvPTs, 5, 10, choice);
                     lvptsLBL.Text = setlvPTs.ToString();
 
+                    if (result == "a")
+                    {
+                        goto case 2;
+                    }
+                    else if (result == "b")
+                    {
+                        goto case 4;
+                    }
                     break;
                 case 4:
+                   
                     storyLineDisp(storyLine[2], storyLineLBL, "");
-
-                    // Continue to next case after displaying story line
+                  
+                    choicesButton("A.) :]", "B.) :]", aButt, bButt);
+                    updateCG("rp2");
                     panelVisibilities("story");
                     currentRouteIndex = 5;
                     break;
 
                 case 5:
                     choicesButton(A_Choices[3], B_Choices[3], aButt, bButt);
+                    updateCG("schoolBG");
                     currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 6, 6, storyLine[3],  "", "");
-                    lvptsLBL.Text = setlvPTs.ToString();
                     break;
 
                 case 6:
                     choicesButton(A_Choices[4], B_Choices[4], aButt, bButt);
+                    updateCG("schoolneutral");
                     currentRouteIndex = GameChoices(choice, aButt, bButt, 10, 2, 7, 7, storyLine[4], "", "");
-                    lvptsLBL.Text = setlvPTs.ToString();
                     break;
 
                 case 7:
                     choicesButton(A_Choices[5], B_Choices[5], aButt, bButt);
-                    currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 8, 8, storyLine[5] , storyLine_A[0], storyLine_B[0]);
-                    lvptsLBL.Text = setlvPTs.ToString();
+                    currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 8, 8, storyLine[5] , "","");
                     break;
 
                 case 8:
                     choicesButton(A_Choices[6], B_Choices[6], aButt, bButt);
-                    currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 9, 9, storyLine[6] , storyLine_A[1], storyLine_B[1]);
-                    // currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 9, 9, storyLine[6], "", storyLine_A[1], storyLine_B[1]);
-                    lvptsLBL.Text = setlvPTs.ToString();
+                    currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 9, 9, storyLine[6] , storyLine_A[0], storyLine_B[0]);
                     break;
 
                 case 9:
                     choicesButton(A_Choices[7].Replace("placeholder", busPro.getName()), B_Choices[7], aButt, bButt);
-                    currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 10, 10, storyLine[7], "", "");
-                    lvptsLBL.Text = setlvPTs.ToString();
+                    currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 10, 10, storyLine[7], storyLine_A[1], storyLine_B[1]);
+                   
+                    if (choice == "a")
+                    {
+                        updateCG("schoolsmirk");
+                    }
+                    else if (choice == "b")
+                    {
+                        updateCG("schoolfrown");
+                    }
                     break;
 
                 case 10:
                     choicesButton(A_Choices[8], B_Choices[8], aButt, bButt);
                     currentRouteIndex = GameChoices(choice, aButt, bButt, 2, 10, 11, 11, storyLine[8], "", "");
-                    lvptsLBL.Text = setlvPTs.ToString();
+                    updateCG("clBG");
                     break;
+                case 11:
+                    storyLineDisp(storyLine[9], storyLineLBL, "");
+                    finalLovePts = busPro.setLovePts(setlvPTs);
+                    busPro.addHighScore(finalLovePts, Pname);
+
                 
+                    currentRouteIndex = Endings(storyLine[10], storyLine[11], Pname, invalidMess);
+
+              
+                    panelVisibilities("story");
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    YesOrNoRestart(choice);
+                    break;
                 default:
                     MessageBox.Show("End of route or invalid index.");
                     break;
@@ -171,10 +196,7 @@ namespace THM_GUI
         }
 
 
-        public int GameChoices(string choice, Button aButt, Button bButt,
-                 int ptsA, int ptsB,
-                 int nextRouteA, int nextRouteB,
-                 string storyline, string sDA, string sDB)
+        public int GameChoices(string choice, Button aButt, Button bButt,int ptsA, int ptsB, int nextRouteA, int nextRouteB,string storyline, string sDA, string sDB)
         {
             string result = busPro.pointAllocation(ref setlvPTs, ptsA, ptsB, choice);
 
@@ -195,6 +217,73 @@ namespace THM_GUI
             }
         }
 
+        public void YesOrNoRestart(string choice)
+        {
+            if (choice == "a") 
+            {
+             
+                busPro.removeItemonHSList();
+                RestartGame();
+            }
+            else if (choice == "b") 
+            {
+                GoToMainMenu();
+            }
+            else
+            {
+                MessageBox.Show("Invalid choice. Please select A or B.");
+            }
+        }
+
+        public int Endings(string badEnding, string goodEnding, string player, string invChoice)
+        {
+            int mainLovePts = setlvPTs;
+
+            if (mainLovePts < 60)
+            {
+                storyLineDisp(badEnding, storyLineLBL, "");
+                updateCG("badEndCG");
+                choicesButton("A.) Restart Game", "B.) Main Menu", aButton, bButton);
+               
+               // MessageBox.Show("You've Reached a Bad End :[ . Would you like to start over?");
+                return 13; 
+            }
+            else if (mainLovePts >= 60)
+            {
+                
+                storyLineDisp(goodEnding, storyLineLBL, "");
+                updateCG("goodEndCG");
+                choicesButton("A.) Restart Game", "B.) Main Menu", aButton, bButton);
+
+               // MessageBox.Show("You've Reached a Good End(?) :) ♥ . Would you like to start over?");
+
+                return 13; 
+            }
+
+            return 12; 
+        }
+
+      
+        private void RestartGame()
+        {
+            
+            setlvPTs = 0;
+            finalLovePts = 0;
+            currentRouteIndex = 1;
+
+            panelVisibilities("intro");
+
+            nameTxtBox.Text = "";
+            lvptsLBL.Text = "0";
+        }
+
+        private void GoToMainMenu()
+        {
+            this.Hide();
+
+             mainMenuForm mainMenu = new mainMenuForm();
+            mainMenu.Show();
+        }
 
         public void choicesButton(string choiceA, string choiceB, Button aButt, Button bButt)
         {
@@ -207,7 +296,30 @@ namespace THM_GUI
         public void storyLineDisp(string storyL, Label sl,string storyLChoice)
         {
             string formattedStory = storyL.Replace(".", ".\n");
-            sl.Text = storyLChoice +"\n" +formattedStory;
+            sl.Text = storyLChoice  +formattedStory;
+        }
+        public void updateCG(string photoname)
+        {
+            try
+            {
+                
+                var resourceManager = Properties.Resources.ResourceManager;
+                var image = resourceManager.GetObject(photoname) as System.Drawing.Image;
+
+                if (image != null)
+                {
+                    pictureBox3.Image = image;
+                    pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    MessageBox.Show($"Image '{photoname}' not found in resources.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading image '{photoname}': {ex.Message}");
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -246,19 +358,7 @@ namespace THM_GUI
 
         private void mainGameFORM_Load(object sender, EventArgs e)
         {
-            //introPanel.Visible = true;
-            //introPanel2.Visible = false;
-            //choice1.Visible = false;
-
-            //aButton.Visible = false;
-            //bButton.Visible = false;
-
-            //exitButt.Visible = false;
-            //mmButt.Visible = false;
-            //nextButt.Visible = false;
-
-            //choicesButton(A_Choices[0], B_Choices[0], aButton, bButton);
-            //storyLineDisp(storyLine[0], storyLineLBL);
+           
         }
 
         private void button2_Click(object sender, EventArgs e)

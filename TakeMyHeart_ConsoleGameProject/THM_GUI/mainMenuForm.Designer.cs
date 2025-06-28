@@ -69,6 +69,7 @@
             hsButt.TabIndex = 3;
             hsButt.Text = "High Scores";
             hsButt.UseVisualStyleBackColor = false;
+            hsButt.Click += hsButt_Click;
             // 
             // guideButt
             // 
@@ -81,6 +82,7 @@
             guideButt.TabIndex = 4;
             guideButt.Text = "Guide";
             guideButt.UseVisualStyleBackColor = false;
+            guideButt.Click += guideButt_Click;
             // 
             // exitButt
             // 
@@ -93,6 +95,7 @@
             exitButt.TabIndex = 5;
             exitButt.Text = "Exit";
             exitButt.UseVisualStyleBackColor = false;
+            exitButt.Click += exitButt_Click;
             // 
             // mainMenuForm
             // 

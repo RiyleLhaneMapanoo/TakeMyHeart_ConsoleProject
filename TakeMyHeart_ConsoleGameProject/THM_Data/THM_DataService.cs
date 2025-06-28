@@ -9,11 +9,12 @@ namespace THM_Data
     public class THM_DataService
     {
         IThm_DataService dataLogic;
-        public THM_DataService() { 
-        
-        //  dataLogic = new THM_textMemoryDataService();
-         // dataLogic = new THM_InMemory();
-         dataLogic = new THM_JSONDataService();
+        public THM_DataService() {
+
+            //  dataLogic = new THM_textMemoryDataService();
+            // dataLogic = new THM_InMemory();
+            // dataLogic = new THM_JSONDataService();
+            dataLogic = new THM_DatabaseService();
         }
 
 

@@ -10,33 +10,12 @@ namespace TMH_BusinessDataLogic
     public class THMProcess
     {
 
-
+            
 
         public THM_DataService dataLogic = new THM_DataService();
 
-        //int highScoreSlot = 0;
-
-        public string pointAllocation(ref int mainLovePts, int ptsA, int ptsB, string choice)
-        {
-
-
-
-            if (choice == PlayerChoice.A.ToString().ToLower())
-            {
-                mainLovePts += ptsA;
-                return "a";
-            }
-            else if (choice == PlayerChoice.B.ToString().ToLower())
-            {
-                mainLovePts += ptsB;
-                return "b";
-            }
-            else
-            {
-                return "Invalid";
-            }
-        }
-
+    
+        //get story stuff
         public string[] getstoryLineLibrary()
         {
 
@@ -73,8 +52,8 @@ namespace TMH_BusinessDataLogic
             return dataLogic.routesData();
         }
 
-        //keep the records or restart all over
-
+   
+        //player stuff
         public int getlovePts()
         {
             return dataLogic.getLovePts();
@@ -110,12 +89,12 @@ namespace TMH_BusinessDataLogic
             return dataLogic.getfinalLovePts();
         }
 
-        //adjusted june 21
+    
         public void addHighScore( int highscoreNum, string playerName)
         {
             dataLogic.addHighScore( highscoreNum, playerName);
         }
-        //adjusted june 21
+     
         public List<( int highscoreNum, string playerName)> getPlayerScoreList()
         {
             return dataLogic.getPlayerScoreList();
@@ -126,27 +105,33 @@ namespace TMH_BusinessDataLogic
         {
             dataLogic.removeItemonHSList();
         }
+        public string pointAllocation(ref int mainLovePts, int ptsA, int ptsB, string choice)
+        {
 
 
 
-        //redundant now that sortHighscoreslotList is implemented
-        //public int highscoreslotIncrementor()
-        //{
-
-        //    highScoreSlot = getHighScoreList().Count + 1;
-        //    return highScoreSlot++;
-
-        //}
-
-        //adjusted june 21
+            if (choice == PlayerChoice.A.ToString().ToLower())
+            {
+                mainLovePts += ptsA;
+                return "a";
+            }
+            else if (choice == PlayerChoice.B.ToString().ToLower())
+            {
+                mainLovePts += ptsB;
+                return "b";
+            }
+            else
+            {
+                return "Invalid";
+            }
+        }
+      
         public List<(int highscoreNum, string playerName)> SortHighScoreList()
         {
 
-            //int highScoreSlott = highScoreSlot;
+          
             var highScoreList = getPlayerScoreList();
 
-            //apparently you need to have a comparer if you were going to sort a list
-            // and y represent two elements from the list that are being compared during the sort. you can use other letters/names
            
             highScoreList.Sort((x,y)=> 
             {
@@ -167,7 +152,7 @@ namespace TMH_BusinessDataLogic
 
                  */
 
-                // If scores are equal, compare names ascending: A-Z
+           
                
                 if (scoreComparison == 0)
                 {
@@ -182,7 +167,7 @@ namespace TMH_BusinessDataLogic
             {
                 highScoreList = highScoreList.Take(10).ToList();
             }
-            //for highscore slot; reassigns item list base on sort order
+         
             for (int i = 0; i < highScoreList.Count; i++)
             {
                 highScoreList[i] = (highScoreList[i].highscoreNum, highScoreList[i].playerName);

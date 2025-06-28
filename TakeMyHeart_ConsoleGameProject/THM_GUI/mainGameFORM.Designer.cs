@@ -43,14 +43,12 @@
             label6 = new Label();
             pictureBox2 = new PictureBox();
             choice1 = new Panel();
+            lvptsLBL = new Label();
             storyPanel = new Panel();
             storyLineLBL = new Label();
-            pictureBox3 = new PictureBox();
             nextButt = new Button();
-            exitButt = new Button();
-            mmButt = new Button();
+            pictureBox3 = new PictureBox();
             startPanel = new Panel();
-            lvptsLBL = new Label();
             introPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             introPanel2.SuspendLayout();
@@ -143,10 +141,10 @@
             // 
             // bButton
             // 
-            bButton.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bButton.Location = new Point(323, 371);
+            bButton.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bButton.Location = new Point(300, 369);
             bButton.Name = "bButton";
-            bButton.Size = new Size(398, 52);
+            bButton.Size = new Size(379, 107);
             bButton.TabIndex = 5;
             bButton.Text = "placeholder";
             bButton.UseVisualStyleBackColor = true;
@@ -154,10 +152,10 @@
             // 
             // aButton
             // 
-            aButton.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            aButton.Location = new Point(323, 313);
+            aButton.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            aButton.Location = new Point(300, 262);
             aButton.Name = "aButton";
-            aButton.Size = new Size(398, 52);
+            aButton.Size = new Size(379, 101);
             aButton.TabIndex = 3;
             aButton.Text = "placeholder";
             aButton.UseVisualStyleBackColor = true;
@@ -192,7 +190,7 @@
             label5.BackColor = Color.Transparent;
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(454, 241);
+            label5.Location = new Point(442, 139);
             label5.Name = "label5";
             label5.Size = new Size(144, 35);
             label5.TabIndex = 3;
@@ -224,83 +222,12 @@
             // 
             choice1.Controls.Add(lvptsLBL);
             choice1.Controls.Add(storyPanel);
+            choice1.Controls.Add(nextButt);
             choice1.Controls.Add(pictureBox3);
             choice1.Location = new Point(-2, -7);
             choice1.Name = "choice1";
             choice1.Size = new Size(1016, 643);
             choice1.TabIndex = 3;
-            // 
-            // storyPanel
-            // 
-            storyPanel.BackColor = Color.White;
-            storyPanel.BackgroundImageLayout = ImageLayout.None;
-            storyPanel.BorderStyle = BorderStyle.FixedSingle;
-            storyPanel.Controls.Add(storyLineLBL);
-            storyPanel.Location = new Point(39, 444);
-            storyPanel.Name = "storyPanel";
-            storyPanel.Size = new Size(909, 143);
-            storyPanel.TabIndex = 4;
-            storyPanel.Paint += panel1_Paint;
-            // 
-            // storyLineLBL
-            // 
-            storyLineLBL.AutoSize = true;
-            storyLineLBL.BackColor = Color.White;
-            storyLineLBL.FlatStyle = FlatStyle.Flat;
-            storyLineLBL.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            storyLineLBL.Location = new Point(46, 19);
-            storyLineLBL.Name = "storyLineLBL";
-            storyLineLBL.Size = new Size(96, 23);
-            storyLineLBL.TabIndex = 2;
-            storyLineLBL.Text = "placeholder";
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources.choiceOneCG;
-            pictureBox3.Location = new Point(-6, 3);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(1001, 643);
-            pictureBox3.TabIndex = 0;
-            pictureBox3.TabStop = false;
-            // 
-            // nextButt
-            // 
-            nextButt.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nextButt.Location = new Point(846, 593);
-            nextButt.Name = "nextButt";
-            nextButt.Size = new Size(102, 40);
-            nextButt.TabIndex = 8;
-            nextButt.Text = ">>";
-            nextButt.UseVisualStyleBackColor = true;
-            nextButt.Click += nextButt_Click;
-            // 
-            // exitButt
-            // 
-            exitButt.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            exitButt.Location = new Point(310, 593);
-            exitButt.Name = "exitButt";
-            exitButt.Size = new Size(246, 36);
-            exitButt.TabIndex = 7;
-            exitButt.Text = "Exit";
-            exitButt.UseVisualStyleBackColor = true;
-            // 
-            // mmButt
-            // 
-            mmButt.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            mmButt.Location = new Point(39, 593);
-            mmButt.Name = "mmButt";
-            mmButt.Size = new Size(246, 36);
-            mmButt.TabIndex = 6;
-            mmButt.Text = "Main Menu";
-            mmButt.UseVisualStyleBackColor = true;
-            // 
-            // startPanel
-            // 
-            startPanel.Location = new Point(0, 0);
-            startPanel.Name = "startPanel";
-            startPanel.Size = new Size(997, 634);
-            startPanel.TabIndex = 1;
-            startPanel.Paint += startPanel_Paint;
             // 
             // lvptsLBL
             // 
@@ -312,16 +239,65 @@
             lvptsLBL.TabIndex = 9;
             lvptsLBL.Text = "label4";
             // 
+            // storyPanel
+            // 
+            storyPanel.BackColor = Color.White;
+            storyPanel.BackgroundImageLayout = ImageLayout.None;
+            storyPanel.BorderStyle = BorderStyle.FixedSingle;
+            storyPanel.Controls.Add(storyLineLBL);
+            storyPanel.Location = new Point(39, 364);
+            storyPanel.Name = "storyPanel";
+            storyPanel.Size = new Size(909, 211);
+            storyPanel.TabIndex = 4;
+            storyPanel.Paint += panel1_Paint;
+            // 
+            // storyLineLBL
+            // 
+            storyLineLBL.AutoSize = true;
+            storyLineLBL.BackColor = Color.White;
+            storyLineLBL.FlatStyle = FlatStyle.Flat;
+            storyLineLBL.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            storyLineLBL.Location = new Point(16, 18);
+            storyLineLBL.Name = "storyLineLBL";
+            storyLineLBL.Size = new Size(96, 23);
+            storyLineLBL.TabIndex = 2;
+            storyLineLBL.Text = "placeholder";
+            // 
+            // nextButt
+            // 
+            nextButt.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            nextButt.Location = new Point(850, 589);
+            nextButt.Name = "nextButt";
+            nextButt.Size = new Size(102, 40);
+            nextButt.TabIndex = 8;
+            nextButt.Text = ">>";
+            nextButt.UseVisualStyleBackColor = true;
+            nextButt.Click += nextButt_Click;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.choiceOneCG;
+            pictureBox3.Location = new Point(-6, 3);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(1001, 643);
+            pictureBox3.TabIndex = 0;
+            pictureBox3.TabStop = false;
+            // 
+            // startPanel
+            // 
+            startPanel.Location = new Point(0, 0);
+            startPanel.Name = "startPanel";
+            startPanel.Size = new Size(997, 634);
+            startPanel.TabIndex = 1;
+            startPanel.Paint += startPanel_Paint;
+            // 
             // mainGameFORM
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(994, 634);
-            Controls.Add(nextButt);
-            Controls.Add(bButton);
             Controls.Add(aButton);
-            Controls.Add(exitButt);
-            Controls.Add(mmButt);
+            Controls.Add(bButton);
             Controls.Add(choice1);
             Controls.Add(introPanel);
             Controls.Add(introPanel2);
@@ -364,8 +340,6 @@
         private Panel choice1;
         private Label storyLineLBL;
         private PictureBox pictureBox3;
-        private Button exitButt;
-        private Button mmButt;
         private Panel storyPanel;
         private Button nextButt;
         private Panel startPanel;

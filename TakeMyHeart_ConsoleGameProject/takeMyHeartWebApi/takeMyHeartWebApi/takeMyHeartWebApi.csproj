@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Common_Player">
+      <HintPath>..\..\TMH_BusinessDataLogic\bin\Debug\net8.0\Common_Player.dll</HintPath>
+    </Reference>
+    <Reference Include="TMH_BusinessDataLogic">
+      <HintPath>..\..\TMH_BusinessDataLogic\bin\Debug\net8.0\TMH_BusinessDataLogic.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
