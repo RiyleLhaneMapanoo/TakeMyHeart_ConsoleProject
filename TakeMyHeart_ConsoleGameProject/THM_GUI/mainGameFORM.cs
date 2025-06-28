@@ -111,7 +111,7 @@ namespace THM_GUI
 
                 case 3:
                     string result = busPro.pointAllocation(ref setlvPTs, 5, 10, choice);
-                    lvptsLBL.Text = setlvPTs.ToString();
+                 
 
                     if (result == "a")
                     {
@@ -274,7 +274,7 @@ namespace THM_GUI
             panelVisibilities("intro");
 
             nameTxtBox.Text = "";
-            lvptsLBL.Text = "0";
+          //  lvptsLBL.Text = "0";
         }
 
         private void GoToMainMenu()
